@@ -2,8 +2,7 @@
 
 #include "../include/helpers.h"
 
-void add_border(int widths[], int len)
-{
+void add_border(int widths[], int len) {
     printf("+");
     for (int col = 0; col < len; col++)
     {
@@ -14,8 +13,7 @@ void add_border(int widths[], int len)
     printf("\n");
 }
 
-void display_item(Item *item)
-{
+void display_item(Item *item) {
     //  For dynamic padding
     char *header[] = {"ITEM NAME", "QUANTITY", "VALUE"};
     int widths[] = {strlen(header[0]), strlen(header[1]), strlen(header[2])};
@@ -36,8 +34,7 @@ void display_item(Item *item)
     add_border(widths, widths_len);
 
     // Draw header
-    for (int i = 0; i < widths_len; i++)
-    {
+    for (int i = 0; i < widths_len; i++) {
         if (i == 0)
             printf("| %-*s ", widths[i], header[i]);
         else
@@ -58,10 +55,8 @@ void display_item(Item *item)
     add_border(widths, widths_len);
 }
 
-void display_inventory(Inventory *inventory)
-{
-    if (inventory->count == 0)
-    {
+void display_inventory(Inventory *inventory) {
+    if (inventory->count == 0) {
         printf("------Inventory is empty------\n");
         return;
     }
@@ -71,8 +66,7 @@ void display_inventory(Inventory *inventory)
     int widths[] = {strlen(header[0]), strlen(header[1]), strlen(header[2])};
     int widths_len = sizeof(widths) / sizeof(widths[0]);
 
-    for (int i = 0; i < inventory->count; i++)
-    {
+    for (int i = 0; i < inventory->count; i++) {
         int name_len = strlen(inventory->item[i].name);
         int quantity_len = num_length(inventory->item[i].quantity);
         int value_len = num_length(inventory->item[i].value);
@@ -89,8 +83,7 @@ void display_inventory(Inventory *inventory)
     add_border(widths, widths_len);
 
     // Draw header
-    for (int i = 0; i < widths_len; i++)
-    {
+    for (int i = 0; i < widths_len; i++) {
         if (i == 0)
             printf("| %-*s ", widths[i], header[i]);
         else
@@ -102,16 +95,14 @@ void display_inventory(Inventory *inventory)
     add_border(widths, widths_len);
 
     // Draw inventory Items
-    for (int item = 0; item < inventory->count; item++)
-    {
+    for (int item = 0; item < inventory->count; item++) {
         printf("| %-*s ", widths[0], inventory->item[item].name);
         printf("| %*i ", widths[1], inventory->item[item].quantity);
         printf("| %*i ", widths[2], inventory->item[item].value);
         printf("|\n");
     }
 
-    if (inventory->count > 0)
-    {
+    if (inventory->count > 0) {
         // Draw bottom border
         add_border(widths, widths_len);
     }
