@@ -16,6 +16,14 @@ int search_item(Inventory *inventory);
 void add_new_item(Inventory *inventory);
 void edit_item(Inventory *inventory, Item *item);
 
+// Filter inventory
+void filter_name_asc(Inventory *inventory);
+void filter_name_desc(Inventory *inventory);
+void filter_quantity_asc(Inventory *inventory);
+void filter_quantity_desc(Inventory *inventory);
+void filter_value_asc(Inventory *inventory);
+void filter_value_desc(Inventory *inventory);
+
 // Graphics
 void add_border(int widths[], int len);
 void display_inventory(Inventory *inventory);

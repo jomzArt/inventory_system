@@ -7,6 +7,7 @@
 // Inventory
 void inventory_manager();
 void item_manager(Inventory *inventory, int item_index);
+void filter_inventory(Inventory *inventory);
 
 int main() {
     SetConsoleCtrlHandler(handle_ctrl_c, TRUE);
@@ -21,10 +22,10 @@ void inventory_manager() {
 
     int cursor_y = 0;
     char *cursor[] = {" <--\n", "    \n"};
-    int options = 3;
+    int options = 4;
 
     // Menu
-    while (1) {
+    while (true) {
         set_cursor_position(0, 0);
         show_cursor(false);
 
@@ -50,10 +51,18 @@ void inventory_manager() {
         else
             printf("%s", cursor[1]);
 
+        printf("| Filter Inventory           |");
+
+        // Add cursor
+        if (cursor_y == 2)
+            printf("%s", cursor[0]);
+        else
+            printf("%s", cursor[1]);
+
         printf("| Exit                       |");
 
         // Add cursors
-        if (cursor_y == 2)
+        if (cursor_y == 3)
             printf("%s", cursor[0]);
         else
             printf("%s", cursor[1]);
@@ -94,6 +103,9 @@ void inventory_manager() {
                         }
                         break;
                     case 2:
+                        filter_inventory(&inventory);
+                        break;
+                    case 3:
                         system("cls");
                         save_to_file(&inventory);
                         export_to_csv(&inventory);
@@ -108,7 +120,7 @@ void inventory_manager() {
 void item_manager(Inventory *inventory, int item_index) {
     Item *item = &inventory->item[item_index];
 
-    while (1) {
+    while (true) {
         system("cls");
         display_item(item);
 
@@ -131,4 +143,49 @@ void item_manager(Inventory *inventory, int item_index) {
                 return;
         }
     }
+}
+
+void filter_inventory(Inventory *inventory) {
+    if (inventory->count == 0) {
+        printf("Inventory is empty\n");
+
+        prompt_enter();
+        return;
+    }
+
+    system("cls");
+
+    display_inventory(inventory);
+
+    printf("+--------------------------------+\n");
+    printf("| 1. Filter by name ASC          |\n");
+    printf("| 2. Filter by name DESC         |\n");
+    printf("| 3. Filter by quantity ASC      |\n");
+    printf("| 4. Filter by quantity DESC     |\n");
+    printf("| 5. Filter by value ASC         |\n");
+    printf("| 6. Filter by value DESC        |\n");
+    printf("+--------------------------------+\n");
+    int choice = ask_for_number("Select Option: ", 1, 6);
+
+    switch (choice) {
+        case 1:
+            filter_name_asc(inventory);
+            break;
+        case 2:
+            filter_name_desc(inventory);
+            break;
+        case 3:
+            filter_quantity_asc(inventory);
+            break;
+        case 4:
+            filter_quantity_desc(inventory);
+            break;
+        case 5:
+            filter_value_asc(inventory);
+            break;
+        case 6:
+            filter_value_desc(inventory);
+    }
+
+    system("cls");
 }
