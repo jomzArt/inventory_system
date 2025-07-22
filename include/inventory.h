@@ -1,3 +1,6 @@
+#ifndef INVENTORY_H
+#define INVENTORY_H
+
 #define MAX_ITEM 100
 #define MAX_LEN_NAME 50
 
@@ -15,3 +18,5 @@ typedef struct
     int count;
 }
 Inventory;
+
+#endif

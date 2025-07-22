@@ -169,22 +169,22 @@ void filter_inventory(Inventory *inventory) {
 
     switch (choice) {
         case 1:
-            filter_name_asc(inventory);
+            filter_name(inventory, name_asc);
             break;
         case 2:
-            filter_name_desc(inventory);
+            filter_name(inventory, name_desc);
             break;
         case 3:
-            filter_quantity_asc(inventory);
+            filter_quantity(inventory, quantity_asc);
             break;
         case 4:
-            filter_quantity_desc(inventory);
+            filter_quantity(inventory, quantity_desc);
             break;
         case 5:
-            filter_value_asc(inventory);
+            filter_value(inventory, value_asc);
             break;
         case 6:
-            filter_value_desc(inventory);
+            filter_value(inventory, value_desc);
     }
 
     system("cls");

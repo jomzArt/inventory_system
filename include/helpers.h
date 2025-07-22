@@ -1,9 +1,15 @@
+#ifndef HELPERS_H
+#define HELPERS_H
+
 #include <stdbool.h>
 #include <windows.h>
 
 #include "inventory.h"
 
 #define COL_SPACING 2
+
+typedef int (*char_compare)(const char *, const char *);
+typedef int (*int_compare)(const int, const int);
 
 // For saving/loading data
 void export_to_csv(Inventory *inventory);
@@ -17,12 +23,16 @@ void add_new_item(Inventory *inventory);
 void edit_item(Inventory *inventory, Item *item);
 
 // Filter inventory
-void filter_name_asc(Inventory *inventory);
-void filter_name_desc(Inventory *inventory);
-void filter_quantity_asc(Inventory *inventory);
-void filter_quantity_desc(Inventory *inventory);
-void filter_value_asc(Inventory *inventory);
-void filter_value_desc(Inventory *inventory);
+int name_asc(const char *a, const char *b);
+int name_desc(const char *a, const char *b);
+int quantity_asc(const int a, const int b);
+int quantity_desc(const int a, const int b);
+int value_asc(const int a, const int b);
+int value_desc(const int a, const int b);
+
+void filter_name(Inventory *inventory, char_compare cmp);
+void filter_quantity(Inventory *inventory, int_compare cmp);
+void filter_value(Inventory *inventory, int_compare cmp);
 
 // Graphics
 void add_border(int widths[], int len);
@@ -39,3 +49,5 @@ void prompt_enter();
 void set_cursor_position(int x, int y);
 void show_cursor(bool visible);
 void swap_items(Item *a, Item *b);
+
+#endif
