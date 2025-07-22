@@ -23,16 +23,16 @@ void add_new_item(Inventory *inventory);
 void edit_item(Inventory *inventory, Item *item);
 
 // Filter inventory
+void filter_name(Inventory *inventory, char_compare cmp);
+void filter_quantity(Inventory *inventory, int_compare cmp);
+void filter_value(Inventory *inventory, int_compare cmp);
+
 int name_asc(const char *a, const char *b);
 int name_desc(const char *a, const char *b);
 int quantity_asc(const int a, const int b);
 int quantity_desc(const int a, const int b);
 int value_asc(const int a, const int b);
 int value_desc(const int a, const int b);
-
-void filter_name(Inventory *inventory, char_compare cmp);
-void filter_quantity(Inventory *inventory, int_compare cmp);
-void filter_value(Inventory *inventory, int_compare cmp);
 
 // Graphics
 void add_border(int widths[], int len);
