@@ -158,12 +158,12 @@ void filter_inventory(Inventory *inventory) {
     display_inventory(inventory);
 
     printf("+--------------------------------+\n");
-    printf("| 1. Filter by name ASC          |\n");
-    printf("| 2. Filter by name DESC         |\n");
-    printf("| 3. Filter by quantity ASC      |\n");
-    printf("| 4. Filter by quantity DESC     |\n");
-    printf("| 5. Filter by value ASC         |\n");
-    printf("| 6. Filter by value DESC        |\n");
+    printf("| 1. Filter by name (A-Z)        |\n");
+    printf("| 2. Filter by name (Z-A)        |\n");
+    printf("| 3. Filter by quantity (ASC)    |\n");
+    printf("| 4. Filter by quantity (DESC)   |\n");
+    printf("| 5. Filter by value (ASC)       |\n");
+    printf("| 6. Filter by value (DESC)      |\n");
     printf("+--------------------------------+\n");
     int choice = ask_for_number("Select Option: ", 1, 6);
 

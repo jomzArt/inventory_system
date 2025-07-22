@@ -50,6 +50,12 @@ int ask_for_number(char *prompt, int min, int max) {
     }
 }
 
+void swap_items(Item *a, Item *b) {
+    Item temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void show_cursor(bool visible) {
     HANDLE h_console = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursor_info;

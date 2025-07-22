@@ -38,3 +38,4 @@ void flush_input();
 void prompt_enter();
 void set_cursor_position(int x, int y);
 void show_cursor(bool visible);
+void swap_items(Item *a, Item *b);

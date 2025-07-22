@@ -1,4 +1,4 @@
 Rune|20|4000
 Muramasa|1|500
-Health Potion|20|200
 Dagger|2|400
+Health Potion|20|200
